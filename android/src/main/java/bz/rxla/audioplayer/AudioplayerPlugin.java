@@ -110,6 +110,7 @@ public class AudioplayerPlugin implements MethodCallHandler {
 
       mediaPlayer.prepareAsync();
     } else {
+      Log.d("MATTLOG", "Reporting duration from play(): " + mediaPlayer.getDuration());
       channel.invokeMethod("audio.onDuration", mediaPlayer.getDuration());
 
       mediaPlayer.start();
@@ -119,6 +120,7 @@ public class AudioplayerPlugin implements MethodCallHandler {
     mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener(){
       @Override
       public void onPrepared(MediaPlayer mp) {
+        Log.d("MATTLOG", "Reporting duration from onPrepared(): " + mediaPlayer.getDuration());
         channel.invokeMethod("audio.onDuration", mediaPlayer.getDuration());
 
         mediaPlayer.start();
