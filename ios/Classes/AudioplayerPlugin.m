@@ -190,6 +190,7 @@ FlutterMethodChannel *_channel;
 -(void) pause {
   [ player pause ];
   isPlaying = false;
+  [_channel invokeMethod:@"audio.onPause" arguments:nil];
 }
 
 
