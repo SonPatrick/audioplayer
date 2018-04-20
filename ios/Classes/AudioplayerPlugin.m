@@ -183,6 +183,7 @@ FlutterMethodChannel *_channel;
   NSLog(@"ios -> onTimeInterval...");
   int mseconds =  CMTimeGetSeconds(time)*1000;
   [_channel invokeMethod:@"audio.onCurrentPosition" arguments:@(mseconds)];
+  [self updateDuration];
 }
 
 
