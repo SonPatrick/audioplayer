@@ -216,8 +216,7 @@ FlutterMethodChannel *_channel;
   isPlaying = false;
   [ self pause ];
   [ self seek: CMTimeMakeWithSeconds(0,1)];
-  [ _channel invokeMethod:@"
-   onComplete" arguments: nil];
+  [ _channel invokeMethod:@"onComplete" arguments: nil];
 }
 
 
