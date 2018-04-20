@@ -160,6 +160,7 @@ FlutterMethodChannel *_channel;
     [self updateDuration];
     [ player play];
     isPlaying = true;
+    [_channel invokeMethod:@"audio.onStart" arguments:nil];
   }
 }
 
@@ -183,7 +184,6 @@ FlutterMethodChannel *_channel;
   NSLog(@"ios -> onTimeInterval...");
   int mseconds =  CMTimeGetSeconds(time)*1000;
   [_channel invokeMethod:@"audio.onCurrentPosition" arguments:@(mseconds)];
-  [self updateDuration];
 }
 
 
@@ -216,7 +216,8 @@ FlutterMethodChannel *_channel;
   isPlaying = false;
   [ self pause ];
   [ self seek: CMTimeMakeWithSeconds(0,1)];
-  [ _channel invokeMethod:@"audio.onComplete" arguments: nil];
+  [ _channel invokeMethod:@"
+   onComplete" arguments: nil];
 }
 
 
