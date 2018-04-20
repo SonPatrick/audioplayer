@@ -13,6 +13,7 @@ class AudioPlayer {
   TimeChangeHandler durationHandler;
   TimeChangeHandler positionHandler;
   VoidCallback startHandler;
+  VoidCallback pauseHandler;
   VoidCallback completionHandler;
   ErrorHandler errorHandler;
 
@@ -47,6 +48,10 @@ class AudioPlayer {
   void setStartHandler(VoidCallback callback) {
     startHandler = callback;
   }
+  
+  void setPauseHandler(VoidCallback callback) {
+    pauseHandler = callback;
+  }
 
   void setCompletionHandler(VoidCallback callback) {
     completionHandler = callback;
@@ -76,6 +81,10 @@ class AudioPlayer {
           startHandler();
         }
         break;
+      case "audio.onPause":
+        if (pauseHandler != null) {
+          pauseHandler();
+        }
       case "audio.onComplete":
         if (completionHandler != null) {
           completionHandler();
